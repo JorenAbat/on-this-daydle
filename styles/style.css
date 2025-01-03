@@ -1,0 +1,190 @@
+/* General Body and Layout */
+body {
+  font-family: "Helvetica", sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f8f6; /* Light pastel background */
+}
+
+/* Heading */
+h1 {
+  font-size: 3rem;
+  margin-top: 30px;
+  color: #4e6e81; /* Soft pastel blue */
+  font-weight: bold;
+}
+
+/* Game Description */
+#game-description {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 10px 0;
+}
+
+/* Game Board */
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 60px); /* 4 columns for the 4 digits */
+  grid-template-rows: repeat(6, 60px); /* 6 rows for 6 guesses */
+  grid-gap: 10px;
+  justify-content: center;
+  margin: 40px auto;
+  max-width: 250px;
+}
+
+/* Box styles for grid cells */
+#game-board div {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px; /* Rounded corners */
+  background-color: #c5c5c5; /* Default gray for absent numbers */
+  font-size: 2rem;
+  text-align: center;
+  line-height: 60px;
+  color: #3b3b3b;
+  opacity: 1;
+  transition: background-color 0.4s ease, color 0.4s ease, transform 0.3s ease-in-out;
+}
+
+/* Reveal class for number animation */
+@keyframes reveal {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Reveal class for number animation */
+.reveal {
+  animation: reveal 0.3s ease-in-out forwards;
+}
+
+/* Box Styles for Feedback */
+#game-board div.correct {
+  background-color: #a8d5ba; /* Pastel green for correct numbers */
+  color: white;
+}
+
+#game-board div.present {
+  background-color: #f9e9a2; /* Soft pastel yellow for present numbers */
+  color: #3b3b3b;
+}
+
+#game-board div.absent {
+  background-color: #d6d6d6; /* Light gray for absent numbers */
+  color: #a1a1a1;
+}
+
+/* Input and Button Styles */
+input {
+  padding: 12px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  border: 2px solid #a8d5ba; /* Pastel green border */
+  margin-top: 20px;
+  width: 200px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4e6e81; /* Soft blue border on focus */
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  background-color: #f9e9a2; /* Pastel yellow background */
+  color: #3b3b3b;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #f2d347; /* Darker yellow on hover */
+}
+
+button:disabled {
+  background-color: #d1d1d1; /* Disabled state */
+  cursor: not-allowed;
+}
+
+/* Modal Overlay */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Transparent black background */
+  z-index: 1000; /* Ensure it appears above other elements */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #ffffff; /* White background for the modal */
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.modal-content h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #4e6e81; /* Match game colors */
+}
+
+.modal-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.modal-content button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #a8d5ba; /* Pastel green */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: #88c39d; /* Slightly darker green on hover */
+}
+
+/* Event Description at the Bottom */
+#event-description {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 20px 0;
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff; /* White background */
+  padding: 15px;
+  border-radius: 8px;
+  width: 80%;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

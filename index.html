@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year Guessing Game</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+    <h1>Year Guessing Game</h1>
+    <div id="game-description">
+        <p>Guess the 4-digit year! You have 6 attempts. Each guess will give you feedback:</p>
+    </div>
+
+    <div id="game-board">
+        <!-- Grid will be populated dynamically -->
+    </div>
+
+    <input type="text" id="guess-input" maxlength="4" placeholder="Enter year (4 digits)">
+    <button id="guess-button">Guess</button>
+
+    <!-- Display the event description -->
+    <div id="event-description">
+        <p><strong>Event to Guess:</strong> <span id="event-text">Loading event...</span></p>
+    </div>
+
+    <!-- Result Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2>Game Over</h2>
+            <p id="result-message"></p>
+            <button onclick="resetGame()">Play Again</button>
+        </div>
+    </div>
+
+    <script src="./scripts/script.js"></script>
+</body>
+
+</html>
