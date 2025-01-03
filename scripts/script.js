@@ -50,17 +50,22 @@ function handleGuess() {
   let guessArray = Array.from(guess);
   let board = document.getElementById("game-board").children;
 
+  // Calculate the difference between guess and secret year
+  let difference = Math.abs(secretYear - guess);
+
   for (let i = 0; i < 4; i++) {
     let box = board[currentGuess * 4 + i];
     let num = guessArray[i];
 
-    // Feedback for the guess
-    if (num === secretYear[i]) {
-      box.classList.add("correct");
-    } else if (secretYear.includes(num)) {
-      box.classList.add("present");
-    } else {
-      box.classList.add("absent");
+    // Apply proximity-based color feedback
+    if (difference === 0) {
+      box.classList.add("correct"); // Exact match
+    } else if (difference <= 10) {
+      box.classList.add("close-10"); // Close within 10 years
+    } else if (difference <= 100) {
+      box.classList.add("close-100"); // Close within 100 years
+    } else if (difference <= 1000) {
+      box.classList.add("close-1000"); // Close within 1000 years
     }
 
     // Reveal the number after a small delay
@@ -73,8 +78,10 @@ function handleGuess() {
   // Check if the guess is correct
   if (guess === secretYear) {
     showModal("You won! Congratulations!");
+    showResetButton(); // Show reset button
   } else if (currentGuess === 5) {
     showModal("Game Over! The correct year was " + secretYear);
+    showResetButton(); // Show reset button
   }
 
   currentGuess++;
@@ -89,6 +96,18 @@ function showModal(message) {
   modal.style.display = "flex";
 }
 
+// Close the modal when clicking the X button
+function closeModal() {
+  const modal = document.getElementById("modal");
+  modal.style.display = "none";
+}
+
+// Show reset button when game is over (win or loss)
+function showResetButton() {
+  const resetButton = document.getElementById("restart-button");
+  resetButton.style.display = "block"; // Show the reset button
+}
+
 // Reset the game
 function resetGame() {
   secretYear = "";
@@ -98,23 +117,34 @@ function resetGame() {
   const board = document.getElementById("game-board");
   Array.from(board.children).forEach((div) => {
     div.textContent = "";
-    div.classList.remove("correct", "present", "absent", "reveal");
+    div.classList.remove(
+      "correct",
+      "close-1000",
+      "close-100",
+      "close-10",
+      "reveal"
+    );
   });
 
   fetchEvent(); // Fetch a new event for the next round
+
+  // Hide the reset button after restarting the game
+  document.getElementById("restart-button").style.display = "none";
 }
 
 // Enable Enter key for guessing
-document
-  .getElementById("guess-input")
-  .addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-      handleGuess();
-    }
-  });
+document.getElementById("guess-input").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    handleGuess();
+  }
+});
 
-document.getElementById("guess-button").addEventListener("click", handleGuess);
+// Event listener for closing the modal with the X button
+document.getElementById("modal-close").addEventListener("click", closeModal);
+
+// Event listener for restarting the game (if needed)
+document.getElementById("restart-button").addEventListener("click", resetGame);
 
 // Initialize the game
+fetchEvent();
 createGrid();
-fetchEvent(); // Fetch event when the page loads

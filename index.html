@@ -13,6 +13,9 @@
     <div id="game-description">
         <p>Guess the 4-digit year! You have 6 attempts. Each guess will give you feedback:</p>
     </div>
+<!-- Reset Button (Initially hidden) -->
+<button id="restart-button" style="display:none;">Restart Game</button>
+
 
     <div id="game-board">
         <!-- Grid will be populated dynamically -->
@@ -29,11 +32,12 @@
     <!-- Result Modal -->
     <div id="modal" class="modal">
         <div class="modal-content">
-            <h2>Game Over</h2>
-            <p id="result-message"></p>
-            <button onclick="resetGame()">Play Again</button>
+            <span id="modal-close" class="close">&times;</span>
+            <h2 id="result-message"></h2>
+            <button id="restart-button">Restart</button>
         </div>
     </div>
+
 
     <script src="./scripts/script.js"></script>
 </body>
