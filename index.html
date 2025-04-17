@@ -11,11 +11,21 @@
 <body>
     <h1>On This Daydle</h1>
     <div id="game-description">
-        <p>Guess the 4-digit year! You have 6 attempts. Each guess will give you feedback:</p>
+        <p>Guess the 4-digit year of the historical event shown below. You have 6 attempts.</p>
+        <div class="feedback-boxes">
+            <div class="feedback-box correct">Correct</div>
+            <div class="feedback-box close-10">Within 10</div>
+            <div class="feedback-box close-100">Within 100</div>
+            <div class="feedback-box close-1000">Within 1000</div>
+        </div>
     </div>
     <!-- Reset Button (Initially hidden) -->
     <button id="restart-button" style="display:none;">Restart Game</button>
 
+    <!-- Display the event description -->
+    <div id="event-description">
+        <p><strong>Event to Guess:</strong> <span id="event-text">Loading event...</span></p>
+    </div>
 
     <div id="game-board">
         <!-- Grid will be populated dynamically -->
@@ -24,20 +34,13 @@
     <input type="text" id="guess-input" maxlength="4" placeholder="Enter year (4 digits)">
     <button id="guess-button">Guess</button>
 
-    <!-- Display the event description -->
-    <div id="event-description">
-        <p><strong>Event to Guess:</strong> <span id="event-text">Loading event...</span></p>
-    </div>
-
     <!-- Result Modal -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <span id="modal-close" class="close">&times;</span>
             <h2 id="result-message"></h2>
-            <button id="restart-button">Restart</button>
         </div>
     </div>
-
 
     <script src="./scripts/script.js"></script>
 </body>

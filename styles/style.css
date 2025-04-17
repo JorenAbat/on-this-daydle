@@ -17,9 +17,15 @@ h1 {
 
 /* Game Description */
 #game-description {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #333;
-  margin: 10px 0;
+  margin: 10px auto 20px;
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+#game-description p {
+  margin: 5px 0;
 }
 
 /* Game Board */
@@ -196,35 +202,70 @@ button:disabled {
 
 /* Restart Button */
 #restart-button {
+  display: none; /* Hidden by default */
+  margin: 20px auto;
   background-color: #f2d347; /* Yellow for restart */
+  width: fit-content;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1.2rem;
+  color: #3b3b3b;
+  border: none;
 }
 
 #restart-button:hover {
   background-color: #f2c933; /* Darker yellow on hover */
 }
 
-/* Event Description at the Bottom */
+#restart-button.visible {
+  display: block;
+}
+
+/* Event Description */
 #event-description {
   font-size: 1.2rem;
   color: #333;
-  margin: 20px 0;
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #ffffff; /* White background */
-  padding: 15px;
+  margin: 10px auto;
+  background-color: #ffffff;
+  padding: 12px;
   border-radius: 8px;
   width: 80%;
+  max-width: 600px;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#restart-button {
-  display: none; /* Hidden by default */
-}
-
-/* When the reset button is shown */
-#restart-button.visible {
+.feedback-boxes {
   display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.feedback-box {
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: white;
+  font-size: 0.9rem;
+  min-width: 100px;
+  text-align: center;
+}
+
+.feedback-box.correct {
+  background-color: #34d854;
+}
+
+.feedback-box.close-10 {
+  background-color: #8be687;
+}
+
+.feedback-box.close-100 {
+  background-color: #ffdb7b;
+  color: #333;
+}
+
+.feedback-box.close-1000 {
+  background-color: #ff7b7b;
 }

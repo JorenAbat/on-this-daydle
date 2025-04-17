@@ -105,7 +105,8 @@ function closeModal() {
 // Show reset button when game is over (win or loss)
 function showResetButton() {
   const resetButton = document.getElementById("restart-button");
-  resetButton.style.display = "block"; // Show the reset button
+  console.log("Showing reset button"); // Debug log
+  resetButton.style.display = "block"; // Use direct style manipulation
 }
 
 // Reset the game
@@ -113,6 +114,7 @@ function resetGame() {
   secretYear = "";
   currentGuess = 0;
   document.getElementById("modal").style.display = "none";
+  document.getElementById("guess-input").value = ""; // Clear the input field
 
   const board = document.getElementById("game-board");
   Array.from(board.children).forEach((div) => {
@@ -138,6 +140,9 @@ document.getElementById("guess-input").addEventListener("keydown", (e) => {
     handleGuess();
   }
 });
+
+// Event listener for the guess button
+document.getElementById("guess-button").addEventListener("click", handleGuess);
 
 // Event listener for closing the modal with the X button
 document.getElementById("modal-close").addEventListener("click", closeModal);
