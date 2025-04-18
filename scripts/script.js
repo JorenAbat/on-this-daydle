@@ -2,6 +2,14 @@ let secretYear = ""; // We will get the year from the API
 let currentGuess = 0;
 let eventDescription = ""; // Store event description to show in the UI
 
+// Format and display today's date
+function updateTodayDate() {
+  const date = new Date();
+  const options = { month: 'long', day: 'numeric' };
+  const formattedDate = date.toLocaleDateString('en-US', options);
+  document.getElementById("today-date").textContent = formattedDate;
+}
+
 // Fetch a random event based on today's date
 async function fetchEvent() {
   const date = new Date();
@@ -151,5 +159,6 @@ document.getElementById("modal-close").addEventListener("click", closeModal);
 document.getElementById("restart-button").addEventListener("click", resetGame);
 
 // Initialize the game
+updateTodayDate();
 fetchEvent();
 createGrid();

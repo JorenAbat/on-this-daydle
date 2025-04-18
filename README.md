@@ -1,11 +1,11 @@
-# On This Daydle
+# Todaydle
 
-A daily historical event guessing game where players try to guess the year of a historical event that happened on the current date.
+A daily historical event guessing game where players try to guess the year of a significant event that happened on the current date in history.
 
 ## How to Play
 
-1. A historical event that occurred on today's date will be displayed
-2. You have 6 attempts to guess the correct 4-digit year
+1. A historical event that occurred on today's date (in a past year) will be displayed
+2. You have 6 attempts to guess the correct 4-digit year when this event took place
 3. After each guess, you'll receive color-coded feedback:
    - 🟩 Green: Exact year match
    - 🟨 Light Green: Within 10 years

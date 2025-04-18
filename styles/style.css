@@ -10,16 +10,25 @@ body {
 /* Heading */
 h1 {
   font-size: 3rem;
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 15px;
   color: #4e6e81; /* Soft pastel blue */
   font-weight: bold;
+}
+
+/* Today's Date */
+#today-date {
+  font-size: 1.8rem;
+  color: #4e6e81;
+  margin: 2px 0 10px;
+  font-weight: 700;
 }
 
 /* Game Description */
 #game-description {
   font-size: 1.1rem;
   color: #333;
-  margin: 10px auto 20px;
+  margin: 0 auto 10px;
   max-width: 600px;
   line-height: 1.4;
 }
